@@ -90,6 +90,7 @@ nav {
   z-index: 100;
   padding: 14px 0;
 }
+
 .nav-inner {
   display: flex;
   align-items: center;
@@ -97,7 +98,9 @@ nav {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
 }
+
 .nav-logo {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
@@ -105,15 +108,18 @@ nav {
   color: var(--verde);
   text-decoration: none;
 }
+
 .nav-logo span {
   color: var(--tierra-oscuro);
 }
+
 .nav-links {
   display: flex;
   gap: 28px;
   list-style: none;
   align-items: center;
 }
+
 .nav-links a {
   text-decoration: none;
   color: var(--texto-suave);
@@ -121,9 +127,11 @@ nav {
   font-weight: 500;
   transition: color 0.2s;
 }
+
 .nav-links a:hover {
   color: var(--verde);
 }
+
 .nav-cta {
   background: var(--verde) !important;
   color: var(--blanco) !important;
@@ -134,15 +142,50 @@ nav {
     background 0.2s,
     transform 0.15s !important;
 }
+
 .nav-cta:hover {
   background: var(--verde-claro) !important;
   transform: translateY(-1px);
 }
+
 .hamburger {
   display: none;
   cursor: pointer;
   background: none;
   border: none;
+  font-size: 30px;
+  color: var(--verde);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 24px;
+
+    width: 240px;
+    padding: 24px;
+
+    background: var(--blanco);
+    border-radius: 20px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
 }
 
 /* ── BUTTONS ── */
@@ -1194,6 +1237,10 @@ nav {
 .form-privacy a {
   color: var(--verde);
   text-decoration: none;
+}
+
+.form-textarea {
+  border-radius: var(--radio-lg);
 }
 
 /* ══════════════════════════════════

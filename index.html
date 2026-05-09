@@ -35,7 +35,7 @@
 
     <!-- ════════════════════════════════
      1. HERO
-════════════════════════════════ -->
+    ════════════════════════════════ -->
     <section style="padding-top: 48px; background: var(--crema)">
       <div class="container">
         <div id="hero">
@@ -736,30 +736,37 @@
     <section id="cta-final" class="section">
       <div class="container">
         <div class="cta-final-box reveal">
-          <div class="badge badge-tierra">⏰ Solo quedan 4 turnos este mes</div>
           <h2>¿Listo/a para empezar?</h2>
           <p>
-            Dejame tus datos y te contacto en menos de 24hs para coordinar tu
-            consulta inicial gratuita. Sin compromisos, sin tarjeta de crédito.
+            Dejame tu nombre y contame brevemente qué necesitás. Te respondo por
+            WhatsApp para coordinar tu consulta inicial gratuita.
           </p>
+
           <div class="form-row">
-            <input type="text" class="form-input" placeholder="Tu nombre" />
-            <input type="tel" class="form-input" placeholder="Tu WhatsApp" />
+            <input
+              type="text"
+              id="nombre"
+              class="form-input"
+              placeholder="Tu nombre"
+            />
           </div>
+
           <div class="form-row">
-            <input type="email" class="form-input" placeholder="Tu email" />
+            <textarea
+              id="mensaje"
+              class="form-input form-textarea"
+              placeholder="Contame qué necesitás"
+              rows="5"
+            ></textarea>
           </div>
-          <a
-            href="#"
+
+          <button
+            onclick="enviarWhatsApp()"
             class="btn btn-primary btn-lg"
             style="width: 100%; text-align: center; display: block"
           >
             Reservar mi consulta gratuita →
-          </a>
-          <p class="form-privacy" style="margin-top: 14px">
-            🔒 Tus datos están seguros. No compartimos información con terceros.
-            <a href="#">Política de privacidad.</a>
-          </p>
+          </button>
         </div>
       </div>
     </section>
@@ -841,6 +848,33 @@
             link.style.color = 'var(--verde)'
           }
         })
+      })
+
+      // WhatsApp form submission
+      function enviarWhatsApp() {
+        const nombre = document.getElementById('nombre').value
+        const mensaje = document.getElementById('mensaje').value
+
+        const texto = `Hola, mi nombre es ${nombre}. ${mensaje}`
+
+        // Reemplazá el número por el tuyo con código de país
+        const numero = '5493513168377'
+
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`
+
+        window.open(url, '_blank')
+      }
+
+      const hamburger = document.querySelector('.hamburger')
+      const navLinks = document.querySelector('.nav-links')
+
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active')
+
+        // Cambia icono ☰ / ✕
+        hamburger.textContent = navLinks.classList.contains('active')
+          ? '✕'
+          : '☰'
       })
     </script>
   </body>
